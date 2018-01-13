@@ -1,0 +1,95 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/style.css"/>
+  </head>
+  <body layout="column" ng-app="myApp" ng-cloak>
+    <md-toolbar class="md-toolbar-tools">
+      <h1>
+        An example Form column
+      </h1>
+    </md-toolbar>
+
+    <md-content ng-controller="MainCtrl" >
+      <form name="simple" novalidate layout-margin>
+        <div layout="column">
+          <md-input-container md-no-float>
+            <md-icon class="material-icons lab-icon">person</md-icon>
+            <input name="name" ng-model="user.name" required md-maxlength="10" placeholder="Indiquez votre nom"/>
+            <div ng-messages="simple.name.$error" ng-show="simple.name.$dirty">
+              <div ng-message="required">Merci de saisir un nom</div>
+              <div ng-message="md-maxlength">Le nom est trop long!</div>
+            </div>
+          </md-input-container>
+          
+          <md-input-container>
+            <label>Email</label>
+            <input name="email" type="email" ng-model="user.email" required/>
+            <div ng-messages="simple.email.$error" ng-show="simple.email.$dirty">
+              <div ng-message="required">Merci de saisir une adresse mail</div>
+              <div ng-message="email">Le champ saisie n'est pas une email !</div>
+            </div>
+          </md-input-container>
+          
+          <md-input-container md-no-float>
+            <md-icon style="color: #0333333">comment</md-icon>
+            <textarea name="comment" ng-model="user.comment" columns="1" rows="3" md-maxlength="100" placeholder="votre commentaire"></textarea>
+            <div ng-messages="simple.comment.$error" ng-show="simple.comment.$dirty">
+               <div ng-message="md-maxlength">Le nom est trop long!</div>
+            </div>
+          </md-input-container>
+          
+          <md-input-container>
+            <label>Votre référent</label>
+            <md-select name="referents" ng-model="user.referent" ng-init="user.referent=0">
+              <md-option ng-repeat="n in listNames" ng-value="n.id">{{n.name}}</md-option>
+            </md-select>
+          </md-input-container>
+          
+          
+          
+        </div>
+        
+        <md-button class="md-raised md-primary" ng-click="register(user)" ng-disabled="simple.$invalid">Register</md-button> 
+        
+      </form>
+      
+      <md-divider></md-divider>
+      <div layout-margin>
+        <code>{{registeredUser | json}}</code>
+      </div>
+      
+    </md-content>
+
+    
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="angular/angular.min.js"></script>
+    <script src="angular-animate/angular-animate.min.js"></script>
+    <script src="angular-aria/angular-aria.min.js"></script>
+    <script src="angular-messages/angular-messages.min.js"></script>
+
+    
+    
+    <script src="angular-material/angular-material.js"></script>
+    
+    <script src="client.js"></script>
+
+  </body>
+</html>
