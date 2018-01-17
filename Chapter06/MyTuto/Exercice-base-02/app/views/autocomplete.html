@@ -1,0 +1,85 @@
+<md-toolbar class="md-toolbar-tools">
+    <h1>
+      An example Autocomplete Control
+    </h1>
+</md-toolbar>
+
+<md-content ng-controller="autocompleteCtrl" >
+  <form name="simple" novalidate layout-margin>
+    
+    <!-- autocomplete control control -->
+    
+    <md-autocomplete
+        md-input-name="city"
+        md-items="city in getMatchingCities(searchKey)"
+        md-search-text="searchKey"
+        md-item-text="city.toString()"
+        ng-model="simple.city"
+        md-floating-label="Destination"
+        md-input-maxlength="20"
+        md-select-on-match
+        md-clear-button="true">
+        <md-item-template>
+              <span
+                  md-highlight-text="searchKey.toString()"
+                  md-highlight-flags="i"  >
+                {{city.toString()}}
+            </span>
+        </md-item-template>
+        <div ng-messages="simple.city.$error">
+          <div ng-message="required">Please provide a city name</div>
+          <div ng-message="maxlength">City name is too long</div>
+        </div>
+        <md-not-found>
+            No matches found with {{searchKey}}.
+        </md-not-found>
+
+    </md-autocomplete>
+
+
+    <md-autocomplete
+        md-input-name="competition"
+        md-item-text="competition.name"
+        md-items="competition in getMatchingCompetitions(searchKeyCompetition)"
+        md-search-text="searchKeyCompetition"
+        md-selected-item="selectedCompetition"
+        md-min-length="0"
+        md-floating-label="Competition"
+        md-select-on-match             
+        ng-model="simple.competition"
+        required
+        md-clear-button="true"
+        md-menu-class="my-drop-down">
+        <md-item-template>
+            <span class="list-title md-body-2"  >
+              {{competition.name}}
+            </span>
+            <span class="list-item"  >
+              <md-icon>directions_run</md-icon>
+              {{competition.athlete}}&nbsp;&nbsp;
+              <md-icon>place</md-icon>
+              {{competition.map}}
+            </span>
+        </md-item-template>
+        <div ng-messages="simple.competition.$error">
+          <div ng-message="required">Please provide a city name</div>
+          <div ng-message="maxlength">City name is too long</div>
+        </div>
+        <md-not-found>
+            No matches found with {{searchKeyCompetition}}.
+        </md-not-found>
+
+    </md-autocomplete>
+    <md-button class="md-raised md-primary" ng-click="register(simple)" ng-disabled="simple.$invalid">Register</md-button> 
+
+  </form>
+  
+  <div layout-margin layout-padding>
+    <p>Selected :
+      <code>{{selectedCompetition}}</code>
+    </p>
+    <p>Control value:
+      <code>{{simple.competition.$modelValue}}</code>
+    </p>
+  </div>
+</md-content>
