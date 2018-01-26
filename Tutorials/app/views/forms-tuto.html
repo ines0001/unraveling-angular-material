@@ -1,0 +1,104 @@
+<md-toolbar class="md-toolbar-tools">
+    <h1>
+      An example Form column
+    </h1>
+</md-toolbar>
+
+<md-content ng-controller="formCtrl" >
+  <form name="simple" novalidate layout-margin>
+    <md-list-item>
+
+      <div layout="column">
+
+      <!-- input control -->
+      <md-input-container md-no-float>
+        <md-icon class="material-icons lab-icon">person</md-icon>
+        <input name="name" ng-model="user.name" required md-maxlength="10" placeholder="Indiquez votre nom"/>
+        <div ng-messages="simple.name.$error" ng-show="simple.name.$dirty">
+          <div ng-message="required">Merci de saisir un nom</div>
+          <div ng-message="md-maxlength">Le nom est trop long!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Email</label>
+        <input name="email" type="email" ng-model="user.email" required/>
+        <div ng-messages="simple.email.$error" ng-show="simple.email.$dirty">
+          <div ng-message="required">Merci de saisir une adresse mail</div>
+          <div ng-message="email">Le champ saisie n'est pas une email !</div>
+        </div>
+      </md-input-container>
+
+      <!-- textarea control -->
+      <md-input-container md-no-float>
+        <md-icon style="color: #0333333">comment</md-icon>
+        <textarea name="comment" ng-model="user.comment" columns="1" rows="3" md-maxlength="100" placeholder="votre commentaire"></textarea>
+        <div ng-messages="simple.comment.$error" ng-show="simple.comment.$dirty">
+           <div ng-message="md-maxlength">Le nom est trop long!</div>
+        </div>
+      </md-input-container>
+
+      <!-- select component control -->
+      <md-input-container>
+        <label>Votre référent</label>
+        <md-select name="referents" ng-model="user.referent" ng-init="user.referent=0" md-on-open="InitListReferent()">
+          <md-option ng-repeat="n in References" ng-value="n.id">{{n.name}}</md-option>
+        </md-select>
+      </md-input-container>
+
+      <!-- radio buuton group  control -->
+
+      <md-subheader class="md-no-sticky">Control Type</md-subheader>
+      <div>
+        <md-radio-group ng-model="user.category" ng-init="user.category=0">
+          <md-radio-button ng-repeat="t in altitudeTypes" ng-value="t.category">
+            {{t.category}}
+            <small class="">
+              &nbsp;({{t.explain}})
+            </small>
+          </md-radio-button>
+
+        </md-radio-group>  
+      </div>
+
+    </div>
+    </md-list-item>
+
+    <md-divider></md-divider>
+
+
+    <md-subheader>Control CheckBox</md-subheader>
+    <div>
+
+
+
+    <!-- Checkbox control -->
+      <md-checkbox
+          class="md-primary"
+          ng-false-value="undefined"
+          ng-true-value="'yes'"
+          ng-model="user.suit">
+        Neoprene suit
+        <small>&nbsp;({{user.suit}})</small>
+      </md-checkbox>
+
+      <md-checkbox
+          ng-false-value="undefined"
+          ng-true-value="'avec l option suit'"
+          ng-disabled="!user.suit"
+          ng-model="user.tank">
+        Tank
+        <small>&nbsp;({{user.tank}})</small>
+      </md-checkbox>
+
+    </div>
+
+    <md-button class="md-raised md-primary" ng-click="register(user)" ng-disabled="simple.$invalid">Register</md-button> 
+  </form>
+  
+  <md-divider></md-divider>
+
+  <div layout-margin>
+    <code>{{registeredUser | json}}</code>
+  </div>
+</md-content>

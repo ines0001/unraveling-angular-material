@@ -1,0 +1,87 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/angular-material-data-table/dist/md-data-table.min.css">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+  </head>
+  <body  ng-controller="MainCtrl" ng-cloak>
+    <md-toolbar class="md-hue-2" md-scroll-shrink md-shrink-speed-factor="0.2">
+      <div class="md-toolbar-tools">
+        
+        <md-menu>
+          <md-button aria-label="Open menu tutorial" class="md-icon-button" ng-click="$mdMenu.open($event)">
+            <md-icon>menu</md-icon>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="item in items_menu">
+              <md-button ng-href="#!/{{item.url}}" >
+                <md-icon ng-if="item.url" ng-class="item.color">{{item.icon}}</md-icon>
+                {{item.title}}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        
+        <h2 flex md-truncate>Examples Tutorial autour de Angular Material </h2>
+      </div>
+    </md-toolbar>
+    <md-content flex> 
+      <!-- routing.js --> 
+      <ng-view>Loading...</ng-view>
+    </md-content>
+    
+    
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="angular/angular.min.js"></script>
+    <script src="angular-animate/angular-animate.min.js"></script>
+    <script src="angular-aria/angular-aria.min.js"></script>
+    <script src="angular-messages/angular-messages.min.js"></script>
+    <script src="angular-route/angular-route.min.js"></script>
+    <script src="angular-material/angular-material.js"></script>
+    
+    <!-- Package Material Design Data Table  -->
+    <script type="text/javascript" src="/angular-material-data-table/dist/md-data-table.min.js"></script>
+    
+    
+    <script src="/js/app.js"></script>  
+    <script src="/js/routing.js"></script>
+    
+    <!-- Tuto Unraveling Angular Material 
+      Chap.06 Forms & Controls
+
+    -->
+    <script src="/js/autocomplete.js"></script>
+    <script src="/js/forms.js"></script>
+    <script src="/js/design-datatable.js"></script>
+    
+    
+    <!-- Tuto Unraveling Angular Material 
+      Chap.03 Managing Layout
+
+    -->
+    <script src="/js/grid_01.js"></script>
+    <script src="/js/menu.js"></script>
+    
+  </body>
+</html>

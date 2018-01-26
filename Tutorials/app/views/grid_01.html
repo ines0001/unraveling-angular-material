@@ -1,0 +1,58 @@
+<md-toolbar class="md-toolbar-tools">
+    <h1>
+      Another example Template Tutorial
+    </h1>
+</md-toolbar>
+
+<md-content ng-controller="gridCtrl" class="grid">
+  <div layout="row">
+    <div flex flex-order="1">Cell #1 (1)</div>
+    <div flex flex-order="2">Cell #2 (2)</div>
+    <div flex flex-order="0">Cell #3 (0)</div>
+  </div>
+  <div layout="row">
+    <div flex flex-order="2">Cell #4 (2)</div>
+    <div flex>Cell #5</div>
+    <div flex flex-order="1">Cell #6 (1)</div>
+    <div flex flex-order="1">Cell #7 (1)</div>
+  </div>
+  
+  <div layout="row" layout-align="center center"
+       style="height: 100px; margin-top: 24px;" layout-margin
+     layout-padding>
+    <div flex>Cell #1</div>
+    <div flex>Cell #2</div>
+    <div flex>Cell #3</div>
+  </div>
+  <div layout="row" layout-align="space-between start"
+       style="height: 100px; margin-top: 24px;">
+    <div flex="10">Cell #4</div>
+    <div flex="10">Cell #5</div>
+    <div flex="10">Cell #6</div>
+  </div>
+  <div layout="column" layout-align="space-around end"
+       style="height: 400px; margin-top: 24px;">
+    <div flex="25">Cell #7</div>
+    <div flex="25">Cell #8</div>
+    <div flex="25">Cell #9</div>
+  </div>
+  
+  <div layout="row">
+  <div flex="33">33%</div>
+  <div flex="75">75%</div>
+</div>
+<div layout="row" style="margin-top: 24px;">
+  <div flex="initial" style="width: 400px">
+    initial
+  </div>
+  <div flex="25">25%</div>
+</div>
+<div layout="row" style="margin-top: 24px;">
+  <div flex="auto" style="width: 400px">
+    auto
+  </div>
+  <div flex="25">25%</div>
+</div>
+    
+</md-content>
+

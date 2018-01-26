@@ -1,0 +1,118 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/angular-material-data-table/dist/md-data-table.min.css">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/grid.css">
+  </head>
+  <body  ng-controller="MainCtrl" layout="column" ng-cloak>
+    <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <md-button aria-label="Open menu tutorial" class="md-icon-button" ng-click="toggleLeft()">
+          <md-icon>menu</md-icon>
+        </md-button>
+        <h2 flex md-truncate>Examples Tutorial autour de Angular Material </h2>
+      </div>
+    </md-toolbar>
+    <md-content flex>
+      <md-sidenav class="md-sidenav-left" md-component-id="left"
+                md-whiteframe="4">
+
+        <md-toolbar class="md-hue-2">
+          <h1 class="md-toolbar-tools">Tutorials Material</h1>
+        </md-toolbar>
+
+        <md-content>
+          <md-list ng-repeat="item in items_menu">
+            <md-divider ng-if="dividerBefore($index)"></md-divider>
+            
+            
+            <md-list-item  class="md-2-line md-primary md-hue-1" ng-class="{expanded: item.expanded}" ng-click="expandOrCollapse(item)">
+              <md-icon ng-class="{expanded: item.expanded}">{{item.icon}}</md-icon>
+              <div class="md-list-item-text md-long-text">
+                <h3>{{item.title}}</h3>
+                <p class="" >{{item.detail}}</p>
+              </div>
+              
+              <md-icon class="ms-secondary material-icons">
+                {{item.expanded ? 'keyboard_arrow_up'
+                  : 'keyboard_arrow_down'}}
+              </md-icon>
+              
+            </md-list-item>
+            <div ng-if="item.expanded">
+              <md-list-item class="md-2-line"
+                ng-repeat="topic in item.topics"
+                ng-click="toggleLeft()"
+                ng-href="{{topic.url}}"  >
+                <div class="md-list-item-text md-offset" >
+                  <h4>{{topic.title.toString()|uppercase}}</h4>
+                  <p>{{topic.detail.toString()}}</p>
+                </div>
+              </md-list-item>
+            </div>
+            <md-divider ng-if="dividerAfter($index)"></md-divider>  
+          </md-list>
+
+        </md-content>
+
+      </md-sidenav>
+      
+      <!-- routing.js --> 
+      <ng-view>Loading...</ng-view>
+    </md-content>
+    
+    
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="angular/angular.min.js"></script>
+    <script src="angular-animate/angular-animate.min.js"></script>
+    <script src="angular-aria/angular-aria.min.js"></script>
+    <script src="angular-messages/angular-messages.min.js"></script>
+    <script src="angular-route/angular-route.min.js"></script>
+    <script src="angular-material/angular-material.js"></script>
+    
+    <!-- Package Material Design Data Table  -->
+    <script type="text/javascript" src="/angular-material-data-table/dist/md-data-table.min.js"></script>
+    
+    
+    <script src="/js/app.js"></script>  
+    <script src="/js/routing.js"></script>
+    
+    <!-- Tuto Unraveling Angular Material 
+      Chap.06 Forms & Controls
+
+    -->
+    <script src="/js/autocomplete.js"></script>
+    <script src="/js/forms.js"></script>
+    <script src="/js/design-datatable.js"></script>
+    
+    
+    <!-- Tuto Unraveling Angular Material 
+      Chap.03 Managing Layout
+
+    -->
+    <script src="/js/grid_01.js"></script>
+    <script src="/js/menu.js"></script>
+    
+  </body>
+</html>
