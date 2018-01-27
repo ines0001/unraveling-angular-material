@@ -47,7 +47,7 @@
             <md-divider ng-if="dividerBefore($index)"></md-divider>
             
             
-            <md-list-item  class="md-2-line md-primary md-hue-1" ng-class="{expanded: item.expanded}" ng-click="expandOrCollapse(item)">
+            <md-list-item  class="md-2-line md-primary md-hue-1" ng-class="{expanded: item.expanded, lightgrey: item.expanded}" ng-click="expandOrCollapse(item)">
               <md-icon ng-class="{expanded: item.expanded}">{{item.icon}}</md-icon>
               <div class="md-list-item-text md-long-text">
                 <h3>{{item.title}}</h3>
