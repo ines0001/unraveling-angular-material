@@ -5,7 +5,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var app = express();
-var assets = require('./assets');
+//var assets = require('./assets');
 
   
 
@@ -27,7 +27,7 @@ app.get("/cities", function (request, response) {
   response.json(competitions_map);
 })
 
-app.use("/assets", assets);
+//app.use("/assets", assets);
 
 var cities = [
       "Budapest",
@@ -563,6 +563,6 @@ var competitions_map = [
 
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(process.env.PORT| 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });

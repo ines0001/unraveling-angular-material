@@ -66,45 +66,7 @@ var ngApp = angular.module('myApp',['ngMaterial','ngForms','ngAutocomplete','ngR
           url:"#!/datatable"
         }
       ]
-    },/*,
-    { 
-      disabled:false,
-      title:"Autocomplete controller",
-      icon:"search",
-      url:"autocomplete"
     },
-    { 
-      disabled:false,
-      title:"Menu",
-      icon:"menu",
-      url:"menu",
-      color:"md-warn"
-    },
-    { 
-      disabled:false,
-      title:"Data table",
-      icon:"timeline",
-      url:"datatable"
-    },
-    { 
-      disabled:false,
-      title:"Icons",
-      icon:"fiber_manual_record",
-      url:"icons",
-      color:"md-primary"
-    },
-    { 
-      disabled:false,
-      title:"Menu drop",
-      icon:"arrow_drop_down_circle",
-      url:"menudrop"
-    },
-    { 
-      disabled:false,
-      title:"Grid",
-      icon:"",
-      url:"grid"
-    },*/
     
   ];
   
@@ -114,6 +76,7 @@ var ngApp = angular.module('myApp',['ngMaterial','ngForms','ngAutocomplete','ngR
   function buildToggler(componentId) {
     return function() {
       $mdSidenav(componentId).toggle();
+      $mdSidenav(componentId).onClose(CollapseAll);
     };
   }
   
@@ -121,6 +84,13 @@ var ngApp = angular.module('myApp',['ngMaterial','ngForms','ngAutocomplete','ngR
       item.expanded = !item.expanded;
   };
   
+  function CollapseAll() {
+      $scope.items_menu.forEach(function(item){
+          if(item.expanded) $scope.expandOrCollapse(item);
+
+      });
+
+  }
 
   
   
